@@ -6,6 +6,7 @@ import './App.css'
 import Register from './Component/Register'
 import Login from './Component/Login'
 import AddTask from './Component/AddTask'
+import Private from './Private'
 
 function App() {
 
@@ -16,7 +17,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/user/addTask" element={<AddTask />} />
+          <Route element={<Private />}>
+            <Route path="user/addTask" element={<AddTask />} />
+          </Route>
         </Routes>
 
       </div>

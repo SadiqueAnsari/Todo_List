@@ -10,17 +10,8 @@ import Pagination from '@mui/material/Pagination';
 import { TextField } from '@mui/material';
 
 
-function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
-}
 
-const rows = [
-    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-    createData('Eclair', 262, 16.0, 24, 6.0),
-    createData('Cupcake', 305, 3.7, 67, 4.3),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
+
 
 export default function TaskList({ allTask,setSearchTask,totalPages,page,setPage }) {
     const handleChange = (event, value) => {
@@ -39,15 +30,15 @@ export default function TaskList({ allTask,setSearchTask,totalPages,page,setPage
                 label="Search task"
                 margin="normal"
                 variant="outlined"
-                sx={{ mb: 5 }}
+                sx={{ my: 8 }}
             // value={task}
             onChange={handleSearch}
             />
             <TableContainer component={Paper}>
-                <Table sx={{}} aria-label="simple table">
+                <Table  aria-label="simple table">
                     <TableHead >
                         <TableRow >
-                            <TableCell sx={{ textAlign: 'center', fontWeight: 'bolder', fontSize: '20px' }}>Task</TableCell>
+                            <TableCell sx={{ textAlign: 'center', fontWeight: 'bolder', fontSize: '20px' }}>Task List</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -65,7 +56,7 @@ export default function TaskList({ allTask,setSearchTask,totalPages,page,setPage
                     </TableBody>
                 </Table>
             </TableContainer>
-            <Pagination sx={{ mx: 10, my: 5 }} count={totalPages} page={page} onChange={handleChange} />
+            <Pagination sx={{ mx: 10, mt: 3 }} count={totalPages} page={page} onChange={handleChange} />
         </>
     );
 }

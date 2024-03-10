@@ -1,4 +1,3 @@
-// RegistrationForm.js
 import React from 'react';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
@@ -22,14 +21,13 @@ const Login = () => {
     },
     validationSchema: validationSchema,
     onSubmit:async (values) => {
-      // console.log("val",values)
       try {
         let result = await userApi.userLogin(values)
-        console.log("res", result)
+        // console.log("res", result)
         if(result.status===200){
+          localStorage.setItem("token",result.data.token)
           alert(result.data.message)
           navigate('/user/addtask')
-          localStorage.setItem("token",result.data.token)
         }
 
       } catch (err) {

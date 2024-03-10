@@ -19,7 +19,8 @@ const AddTask = () => {
 
 const handleAllTask = async (no) => {
     try {
-        let result = await  client.get(`/user/getTask?searchTask=${searchTask}&page=${no??page}&limit=${5}`) 
+        let result = await userApi.getTask(searchTask,no??page)  
+        // client.get(`/user/getTask?searchTask=${searchTask}&page=${no??page}&limit=${5}`) 
         setAlltask(result.data.data)
         setTotalPages(result.data.totalPages)
     } catch (err) {
@@ -29,8 +30,6 @@ const handleAllTask = async (no) => {
 
 useEffect(() => {
     const timer = setTimeout(() => {
-      // Perform your search operation here with the complete word
-      console.log('Searching for:', searchTask);
       handleAllTask(1)
     }, 500); 
     return () => clearTimeout(timer);
@@ -45,7 +44,7 @@ useEffect(() => {
     const handleAdd = async () => {
         try {
             let result = await userApi.addTask(task) 
-            console.log("res", result)
+            // console.log("res", result)
             if (result.status === 200) {
                 alert(result.data.message)
                 handleAllTask()
@@ -66,7 +65,7 @@ useEffect(() => {
             <Grid container spacing={6}>
                 <Grid item xs={4}>
                     <Typography variant="h5">Add Task</Typography>
-                    <form style={{ width: '100%', marginTop: 20 }}>
+                    <form style={{ width: '100%', marginTop: 15 }}>
 
                         <TextField
                             fullWidth
